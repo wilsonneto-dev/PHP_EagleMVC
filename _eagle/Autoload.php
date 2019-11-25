@@ -1,5 +1,7 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
 spl_autoload_register(function ($className) {
     if (file_exists('_eagle/' . $className . '.php')) { 
         require_once '_eagle/' . $className . '.php'; 

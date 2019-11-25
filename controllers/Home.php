@@ -4,7 +4,7 @@ class Home extends EagleController
 {
 	public function index()
 	{
-		echo "index home here";
+		return $this->view([ "message" => "index home here" ]);
     }
     
     public function test()

@@ -16,7 +16,8 @@ class Bootstrap
 				if (!empty($tokens)) {
 					$actionName = array_shift($tokens);
 					if (method_exists ( $controller , $actionName )) {
-						$controller->{$actionName}(@$tokens);	
+                        $controller->setViewPath($controllerName, $actionName);
+                        $controller->{$actionName}(@$tokens);	
 					}
 					else {
 						$flag = TRUE;
@@ -25,6 +26,7 @@ class Bootstrap
 				else
 				{
 					// default action
+                    $controller->setViewPath($controllerName, "index");
 					$controller->index();
 				}				
 			}
@@ -35,6 +37,7 @@ class Bootstrap
 		else {
 			$controllerName = 'Home';
 			$controller = new $controllerName();
+            $controller->setViewPath($controllerName, "index");
 			$controller->index();
 		}
 		
