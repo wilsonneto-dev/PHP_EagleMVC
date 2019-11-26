@@ -7,6 +7,10 @@
     <title>Document</title>
   </head>
   <body>
-    <h3>{{ message }}</h3>
+    <ul>
+      {% for group in groups %}
+      <li>{{ group.nome }}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

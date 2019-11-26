@@ -10,7 +10,7 @@ class EagleController
 		$this->twig = $twig;
 	}
 
-	public function view($data, $pViewPath = "")
+	public function view($data = [], $pViewPath = "")
 	{
 		if($pViewPath != "")
 			$this->viewPath = $pViewPath;

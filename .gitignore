@@ -1,5 +1,8 @@
 /vendor/
 /cache/
 /views_cache/
+/src/vendor/
+/src/cache/
+/src/views_cache/
 composer.phar
 composer.lock
