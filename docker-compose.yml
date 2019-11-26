@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  app:
+    build: ./docker/
+    container_name: php-eaglemvc-container
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8081:80"
+    
