@@ -6,7 +6,6 @@ class DB {
     public static function R()
     {
         $configs = Config::get();
-        var_dump($configs);
 
         $db_host = $configs["database"]["db_host"];
         $db_name = $configs["database"]["db_name"];

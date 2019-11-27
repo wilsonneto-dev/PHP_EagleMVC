@@ -8,9 +8,9 @@ class Home extends EagleController
 		DB::R();
 		$grupos = R::findAll('grupo_admin');
 
-		var_dump( json_encode($grupos, JSON_PRETTY_PRINT));
+		// echo json_encode($grupos, JSON_PRETTY_PRINT);
 
-		// return $this->view([ "groups" => $grupos ]);
+		return $this->view([ "groups" => $grupos ]);
     }
     
     public function test()

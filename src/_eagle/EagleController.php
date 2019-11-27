@@ -15,7 +15,7 @@ class EagleController
 		if($pViewPath != "")
 			$this->viewPath = $pViewPath;
 		
-		echo $this->twig->render($this->viewPath, $data);
+		return $this->twig->render($this->viewPath, $data);
 	}
 
 	public function setViewPath($controller, $action)

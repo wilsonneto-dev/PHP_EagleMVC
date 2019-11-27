@@ -12,12 +12,10 @@ class Bootstrap
 			// 2. Dispatcher
 			$controllerName = ucfirst(array_shift($tokens));
 			if (file_exists('Controllers/'.$controllerName.'.php')) {
-				$controller = new $controllerName();
 				if (!empty($tokens)) {
 					$actionName = array_shift($tokens);
 					if (method_exists ( $controller , $actionName )) {
-                        $controller->setViewPath($controllerName, $actionName);
-                        $controller->{$actionName}(@$tokens);	
+						$this->request($controllerName, $actionName, @$tokens);
 					}
 					else {
 						$flag = TRUE;
@@ -25,9 +23,7 @@ class Bootstrap
 				}
 				else
 				{
-					// default action
-                    $controller->setViewPath($controllerName, "index");
-					$controller->index();
+					$this->request($controllerName, "index", @$tokens);
 				}				
 			}
 			else {
@@ -36,17 +32,33 @@ class Bootstrap
 		}
 		else {
 			$controllerName = 'Home';
-			$controller = new $controllerName();
-            $controller->setViewPath($controllerName, "index");
-			$controller->index();
+			$this->request($controllerName, "index");
 		}
 		
 		//Error404 page
 		if ( $flag ) {
 			$controllerName = 'Error404';
-			$controller = new $controllerName();
-			$controller->index();
+			$this->request($controllerName, "index");
 		}
+	}
+
+	private function request($controllerName, $actionName, $tokens = null)
+	{
+		$controller = new $controllerName();
+		$controller->setViewPath($controllerName, $actionName);
+		$response = "";
+
+		if($tokens != null)
+			$response = $controller->$actionName(@$tokens);
+		else
+			$response = $controller->$actionName();
+
+		$this->response($response);
+	}
+
+	private function response($responseHtml)
+	{
+		echo $responseHtml;
 	}
 }
 
