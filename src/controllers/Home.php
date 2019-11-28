@@ -6,9 +6,7 @@ class Home extends EagleController
 	public function index()
 	{
 		DB::R();
-		$grupos = R::findAll('grupo_admin');
-
-		// echo json_encode($grupos, JSON_PRETTY_PRINT);
+		// $grupos = R::findAll('grupo_admin');
 
 		return $this->view([ "groups" => $grupos ]);
     }
